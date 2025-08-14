@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Tuple
 
 def create_table_sql(table_name: str, fields: Dict) -> str:
     field_list = []
@@ -8,4 +8,8 @@ def create_table_sql(table_name: str, fields: Dict) -> str:
     fields_and_options = ', '.join(field_list)
     return f'CREATE TABLE IF NOT EXISTS {table_name} ({fields_and_options});'
 
+def create_insert_sql(table_name: str, fields: Tuple) -> str:
+    field_list = [field for field in fields]
+    qmark_list = ['?' for field in fields]
+    return f'INSERT INTO {table_name} ({', '.join(field_list)}) VALUES ({', '.join(qmark_list)});'
 
