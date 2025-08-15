@@ -1,15 +1,6 @@
 # Make sure 'PRAGMA foreign_keys = ON;' in sqlite. 'PRAGMA foreign_keys;' should return 1.
 
-users_table = {
-    'name': 'users',
-    'fields': {
-        'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
-        'username': 'TEXT NOT NULL UNIQUE',
-        'email': 'TEXT',
-        'highscore': 'INTEGER',
-        'nationality': 'TEXT'
-    }
-}
+
 
 orgs_table = {
     'name': 'orgs',
@@ -37,7 +28,7 @@ org_types_table = {
     'name': 'org_types',
     'fields': {
         'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
-        'org_type_jp': 'TEXT',
+        'org_type_jp': 'TEXT UNIQUE',
         'org_type_en': 'TEXT',
         'abbrev_jp': 'TEXT',
         'abbrev_en': 'TEXT',

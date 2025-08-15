@@ -1,5 +1,5 @@
 import sqlite3
-import tools, statements
+import tools, statements, utils
 
 # Create in-memory database for testing
 connection = sqlite3.connect(':memory:')
@@ -9,8 +9,14 @@ cursor.execute('PRAGMA foreign_keys = ON;')
 
 # Create initial table for organizations
 create_users_sql = tools.create_table_sql(
-    table_name=statements.users_table['name'],
-    fields=statements.users_table['fields']
+        'users',
+        {
+            'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
+            'username': 'TEXT NOT NULL UNIQUE',
+            'email': 'TEXT',
+            'highscore': 'INTEGER',
+            'nationality': 'TEXT'
+        }
 )
 
 print(create_users_sql)
@@ -83,6 +89,6 @@ row_factory_cursor = connection.cursor()
 row_factory_cursor.execute('SELECT * FROM users')
 rows = row_factory_cursor.fetchall()
 for row in rows:
-    print(f'{tools.ANSI_ESCAPE_BOLD}{tools.ANSI_ESCAPE_YELLOW}{row['username']}{tools.ANSI_ESCAPE_RESET} from {tools.ANSI_ESCAPE_UNDERLINE}{tools.ANSI_ESCAPE_GREEN}{row['nationality']}{tools.ANSI_ESCAPE_RESET} has a high-score of {tools.ANSI_ESCAPE_RED}{row['highscore']}{tools.ANSI_ESCAPE_RESET}.')
+    print(f'{utils.ANSI_ESCAPE_BOLD}{utils.ANSI_ESCAPE_YELLOW}{row['username']}{utils.ANSI_ESCAPE_RESET} from {utils.ANSI_ESCAPE_UNDERLINE}{utils.ANSI_ESCAPE_GREEN}{row['nationality']}{utils.ANSI_ESCAPE_RESET} has a high-score of {utils.ANSI_ESCAPE_RED}{row['highscore']}{utils.ANSI_ESCAPE_RESET}.')
 
 connection.close()
