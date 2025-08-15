@@ -8,8 +8,7 @@ users_table = {
         'email': 'TEXT',
         'highscore': 'INTEGER',
         'nationality': 'TEXT'
-    },
-    'foreign_keys': []
+    }
 }
 
 orgs_table = {

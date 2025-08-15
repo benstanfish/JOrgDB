@@ -3,14 +3,14 @@ import tools, statements
 
 # Create in-memory database for testing
 connection = sqlite3.connect(':memory:')
+# connection = sqlite3.connect('./store.db')
 cursor = connection.cursor()
 cursor.execute('PRAGMA foreign_keys = ON;')
 
 # Create initial table for organizations
 create_users_sql = tools.create_table_sql(
     table_name=statements.users_table['name'],
-    fields=statements.users_table['fields'],
-    foreign_keys=statements.users_table['foreign_keys']
+    fields=statements.users_table['fields']
 )
 
 print(create_users_sql)
