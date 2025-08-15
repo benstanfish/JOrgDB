@@ -1,13 +1,10 @@
 import sqlite3
 import tools, statements
 
-
-
 # Create in-memory database for testing
 connection = sqlite3.connect(':memory:')
 cursor = connection.cursor()
 cursor.execute('PRAGMA foreign_keys = ON;')
-
 
 # Create initial table for organizations
 create_users_sql = tools.create_table_sql(
@@ -26,8 +23,6 @@ create_orgs_sql = tools.create_table_sql(
 )
 
 print(create_orgs_sql)
-
-
 
 cursor.execute(create_users_sql)
 cursor.execute(create_orgs_sql)
