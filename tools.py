@@ -20,7 +20,7 @@ def create_table_sql(table_name: str, fields: Dict, foreign_keys: Dict = None) -
 
     if foreign_keys:
         for fk in foreign_keys:
-            field_list.append(fk)
+            field_list.append(f'FOREIGN KEY ({fk['key']}) REFERENCES {fk['ref_table']}({fk['ref_key']})')
         
     fields_and_options = ', '.join(field_list)
     return f'CREATE TABLE IF NOT EXISTS {table_name} ({fields_and_options});'

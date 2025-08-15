@@ -19,18 +19,22 @@ orgs_table = {
         'friendly': 'TEXT',
         'name_en': 'TEXT',
         'name_jp': 'TEXT NOT NULL UNIQUE',
-        'org_type': 'INTEGER',
+        'org_type_id': 'INTEGER',
         'affix_side': 'TEXT',
         'logo_path': 'TEXT',
         'notes': 'TEXT',
         'is_inactive': 'BOOL',
     },
     'foreign_keys': [
-        'FOREIGN KEY(org_type) REFERENCES org_types(id)'
+        {
+        'key': 'org_type_id',
+        'ref_table': 'org_types',
+        'ref_key': 'id'
+        }
     ]
 }
 
-org_types = {
+org_types_table = {
     'name': 'org_types',
     'fields': {
         'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
@@ -41,7 +45,6 @@ org_types = {
         'notes': 'TEXT'
     },
     'foreign_keys': [
-        'FOREIGN KEY(org_type) REFERENCES org_types(id)'
     ]  
 }
 
