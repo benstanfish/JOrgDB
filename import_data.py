@@ -3,8 +3,8 @@ import sqlite3
 import tools, statements, utils
 
 # Create in-memory database for testing
-# connection = sqlite3.connect(':memory:')
-connection = sqlite3.connect('../store.db')
+connection = sqlite3.connect(':memory:')
+# connection = sqlite3.connect('../store.db')
 cursor = connection.cursor()
 cursor.execute('PRAGMA foreign_keys = ON;')
 
@@ -82,6 +82,23 @@ insert_org_types_sql = tools.create_insert_sql('orgs',
 cursor.executemany(insert_org_types_sql, list_of_data_as_tuples)
 connection.commit()
 
-cursor.execute('SELECT * FROM orgs')
-for item in cursor.fetchmany(10):
+# cursor.execute('SELECT * FROM orgs')
+# for item in cursor.fetchmany(10):
+#     print(item)
+
+left_join_sql = """
+    SELECT name_ja, org_types.type_ja FROM orgs
+    LEFT JOIN org_types
+    ON orgs.org_type_id = org_types.id
+    WHERE org_types.type_ja = "一般財団法人"
+"""
+
+cursor.execute(left_join_sql)
+resp = cursor.fetchall();
+for item in resp:
+    print(item)
+
+print(type(resp))
+nihon = [entity for entity in resp if '日本' in entity[0]]
+for item in nihon:
     print(item)
