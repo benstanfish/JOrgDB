@@ -12,7 +12,7 @@ def create_table_sql(table_name: str, fields: Dict, foreign_keys=None) -> str:
     fields_and_options = ', '.join(field_list)
     return f'CREATE TABLE IF NOT EXISTS {table_name} ({fields_and_options});'
 
-def create_insert_sql(table_name: str, fields: Tuple) -> str:
+def create_insert_sql(table_name: str, fields) -> str:
     field_list = [field for field in fields]
     qmark_list = ['?' for field in fields]
     return f'INSERT INTO {table_name} ({', '.join(field_list)}) VALUES ({', '.join(qmark_list)});'

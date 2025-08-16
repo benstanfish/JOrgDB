@@ -19,7 +19,7 @@ orgs_schema = {
         'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
         'friendly': 'TEXT',
         'name_en': 'TEXT',
-        'name_ja': 'TEXT NOT NULL UNIQUE',
+        'name_ja': 'TEXT NOT NULL',
         'org_type_id': 'INTEGER',
         'affix_side': 'TEXT',
         'logo_path': 'TEXT',
