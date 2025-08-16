@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlite3
 import tools, statements, utils
+from PIL import Image
 
 # Create in-memory database for testing
 connection = sqlite3.connect(':memory:')
@@ -95,8 +96,11 @@ left_join_sql = """
 
 cursor.execute(left_join_sql)
 resp = cursor.fetchall();
-for item in resp:
-    print(item)
+# for item in resp:
+#     # img_path = './img/'+ item[2]
+#     # with Image.open(img_path) as img:
+#     #     img.show()
+    
 
 # print(type(resp))
 # nihon = [entity for entity in resp if '日本' in entity[0]]
