@@ -87,7 +87,7 @@ connection.commit()
 #     print(item)
 
 left_join_sql = """
-    SELECT name_ja, org_types.type_ja FROM orgs
+    SELECT name_ja, org_types.type_ja, logo_path FROM orgs
     LEFT JOIN org_types
     ON orgs.org_type_id = org_types.id
     WHERE org_types.type_ja = "一般財団法人"
@@ -98,7 +98,7 @@ resp = cursor.fetchall();
 for item in resp:
     print(item)
 
-print(type(resp))
-nihon = [entity for entity in resp if '日本' in entity[0]]
-for item in nihon:
-    print(item)
+# print(type(resp))
+# nihon = [entity for entity in resp if '日本' in entity[0]]
+# for item in nihon:
+#     print(item)
