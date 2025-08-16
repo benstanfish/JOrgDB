@@ -1,6 +1,6 @@
 from typing import Dict, Tuple, Optional
 
-def create_table_sql(table_name: str, fields: Dict, foreign_keys: Dict = None) -> str:
+def create_table_sql(table_name: str, fields: Dict, foreign_keys=None) -> str:
     field_list = []
     for field_name, field_options in fields.items():
         field_list.append(f'{field_name} {field_options}')

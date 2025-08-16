@@ -1,14 +1,25 @@
 # Make sure 'PRAGMA foreign_keys = ON;' in sqlite. 'PRAGMA foreign_keys;' should return 1.
 
+org_types_schema = {
+    'name': 'org_types',
+    'fields': {
+        'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
+        'type_ja': 'TEXT UNIQUE',
+        'kana': 'TEXT',
+        'type_en': 'TEXT',
+        'abbrev_ja': 'TEXT',
+        'abbrev_en': 'TEXT',
+        'notes': 'TEXT'
+    }
+}
 
-
-orgs_table = {
+orgs_schema = {
     'name': 'orgs',
     'fields': {
         'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
         'friendly': 'TEXT',
         'name_en': 'TEXT',
-        'name_jp': 'TEXT NOT NULL UNIQUE',
+        'name_ja': 'TEXT NOT NULL UNIQUE',
         'org_type_id': 'INTEGER',
         'affix_side': 'TEXT',
         'logo_path': 'TEXT',
@@ -24,17 +35,5 @@ orgs_table = {
     ]
 }
 
-org_types_table = {
-    'name': 'org_types',
-    'fields': {
-        'id': 'INTEGER PRIMARY KEY AUTOINCREMENT',
-        'org_type_jp': 'TEXT UNIQUE',
-        'org_type_en': 'TEXT',
-        'abbrev_jp': 'TEXT',
-        'abbrev_en': 'TEXT',
-        'notes': 'TEXT'
-    },
-    'foreign_keys': [
-    ]  
-}
+
 
