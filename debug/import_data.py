@@ -155,3 +155,6 @@ cursor.execute(compound_left_join_sql)
 resp2 = cursor.fetchall();
 for item in resp2:
     print(item)
+
+
+connection.close()
